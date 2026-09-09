@@ -60,7 +60,7 @@ article {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    -webkit-text-stroke: 0.15px currentColor;
+    -webkit-text-stroke: 0.0px currentColor;
     paint-order: stroke fill;
 }
 
@@ -1036,4 +1036,18 @@ li .note-properties,
 
 .katex {
     font-size: 1em !important;
+}
+
+/* Kill the darkmode toggle entirely */
+header .darkmode {
+    display: none !important;
+}
+
+/* Let search expand into the freed space */
+header .search {
+    margin-left: auto !important;
+    flex: 1 1 auto !important;
+    min-width: 180px !important;
+    max-width: 420px !important;
+    /* raise this to taste — was 280px */
 }
