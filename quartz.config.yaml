@@ -1,0 +1,596 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+
+configuration:
+  pageTitle: "Quphine"
+  enableSPA: true
+  enablePopovers: true
+  baseUrl: "quphine.github.io"
+  ignorePatterns: ["private", "templates", ".obsidian"]
+  defaultDateType: "created"
+  theme:
+    fontOrigin: local
+    typography:
+      title: "Baskerville"
+      header: "Baskerville"
+      body: "CMU Serif"
+      code: "IBM Plex Mono"
+    colors:
+      lightMode:
+        light: "#faf8f8"
+        lightgray: "#e5e5e5"
+        gray: "#b8b8b8"
+        darkgray: "#3a3a3a"
+        dark: "#1a1a1a"
+        secondary: "#d9701e"
+        tertiary: "#e8935a"
+        highlight: "rgba(217,112,30,0.10)"
+        textHighlight: "rgba(217,112,30,0.25)"
+      darkMode:
+        light: "#080826"
+        lightgray: "#3d352c"
+        gray: "#5c4f42"
+        darkgray: "#e7e0d6"
+        dark: "#f4ece1"
+        secondary: "#ff8a3d"
+        tertiary: "#ffb073"
+        highlight: "rgba(255,138,61,0.12)"
+        textHighlight: "rgba(255,138,61,0.35)"
+
+
+plugins:
+
+  # =========================================================
+  # DATES
+  # =========================================================
+
+  - source: "@quartz-community/created-modified-date"
+    enabled: true
+    options:
+      defaultDateType: modified
+      priority:
+        - frontmatter
+        - git
+        - filesystem
+    order: 10
+
+
+  # =========================================================
+  # SYNTAX HIGHLIGHTING
+  # =========================================================
+
+  - source: "@quartz-community/syntax-highlighting"
+    enabled: true
+    options:
+      theme:
+        light: github-light
+        dark: github-dark
+      keepBackground: false
+    order: 20
+
+
+  # =========================================================
+  # OBSIDIAN MARKDOWN
+  # =========================================================
+
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    options:
+      comments: true
+      highlight: true
+      wikilinks: true
+      callouts: true
+      mermaid: true
+      parseTags: true
+      parseArrows: true
+      parseBlockReferences: true
+      enableInHtmlEmbed: false
+      enableYouTubeEmbed: true
+      enableVideoEmbed: true
+      enableCheckbox: true
+    order: 30
+
+
+  # =========================================================
+  # GITHUB MARKDOWN
+  # =========================================================
+
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 40
+
+
+  # =========================================================
+  # TABLE OF CONTENTS
+  # =========================================================
+
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    order: 50
+    layout:
+      position: right
+      priority: 10
+
+
+  # =========================================================
+  # LINK CRAWLING
+  # =========================================================
+
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    options:
+      markdownLinkResolution: shortest
+    order: 60
+
+
+  # =========================================================
+  # DESCRIPTION
+  # =========================================================
+
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 70
+
+
+  # =========================================================
+  # LATEX / KATEX
+  # =========================================================
+
+  - source: "@quartz-community/latex"
+    enabled: true
+    options:
+      renderEngine: katex
+    order: 80
+
+
+  # =========================================================
+  # CITATIONS
+  # =========================================================
+
+  - source: "@quartz-community/citations"
+    enabled: false
+    order: 85
+
+
+  # =========================================================
+  # HARD LINE BREAKS
+  # =========================================================
+
+  - source: "@quartz-community/hard-line-breaks"
+    enabled: true
+    order: 90
+
+
+  # =========================================================
+  # OX-HUGO
+  # =========================================================
+
+  - source: "@quartz-community/ox-hugo"
+    enabled: false
+    order: 91
+
+
+  # =========================================================
+  # ROAM
+  # =========================================================
+
+  - source: "@quartz-community/roam"
+    enabled: false
+    order: 92
+
+
+  # =========================================================
+  # QUARTZ FONTS
+  # =========================================================
+
+  - source: "@quartz-community/quartz-fonts"
+    enabled: false
+
+
+  # =========================================================
+  # EXTERNAL DEFAULT THEME
+  # =========================================================
+
+  - source: "@quartz-themes/core"
+    enabled: false
+    options:
+      theme: default
+      mode: both
+
+
+  # =========================================================
+  # PUBLISHING
+  # =========================================================
+
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+
+  - source: "@quartz-community/explicit-publish"
+    enabled: false
+
+  - source: "@quartz-community/unlisted-pages"
+    enabled: true
+    options: {}
+    order: 45
+
+
+  # =========================================================
+  # ENCRYPTED PAGES
+  # =========================================================
+
+  - source: "@quartz-community/encrypted-pages"
+    enabled: true
+    options:
+      iterations: 600000
+      passwordField: password
+      unlistWhenEncrypted: false
+      outputPath: static/encryptedContentIndex.json
+
+
+  # =========================================================
+  # STACKED PAGES
+  # =========================================================
+
+  - source: "@quartz-community/stacked-pages"
+    enabled: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: all
+
+
+  # =========================================================
+  # REDIRECTS
+  # =========================================================
+
+  - source: "@quartz-community/alias-redirects"
+    enabled: true
+
+
+  # =========================================================
+  # CONTENT INDEX
+  # =========================================================
+
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: true
+
+
+  # =========================================================
+  # FAVICON
+  # =========================================================
+
+  - source: "@quartz-community/favicon"
+    enabled: true
+
+
+  # =========================================================
+  # OPEN GRAPH IMAGE
+  # =========================================================
+
+  - source: "@quartz-community/og-image"
+    enabled: true
+
+
+  # =========================================================
+  # CNAME
+  # =========================================================
+
+  - source: "@quartz-community/cname"
+    enabled: true
+
+
+  # =========================================================
+  # CANVAS
+  # =========================================================
+
+  - source: "@quartz-community/canvas-page"
+    enabled: true
+
+
+  # =========================================================
+  # CONTENT PAGE
+  # =========================================================
+
+  - source: "@quartz-community/content-page"
+    enabled: true
+
+
+  # =========================================================
+  # FOLDER PAGE
+  # =========================================================
+
+  - source: "@quartz-community/folder-page"
+    enabled: true
+
+
+  # =========================================================
+  # TAG PAGE
+  # =========================================================
+
+  - source: "@quartz-community/tag-page"
+    enabled: true
+
+
+  # =========================================================
+  # LEFT SIDEBAR — EXPLORER
+  # =========================================================
+
+  - source: "@quartz-community/explorer"
+    enabled: true
+    layout:
+      position: left
+      priority: 50
+
+
+  # =========================================================
+  # RIGHT SIDEBAR — GRAPH
+  # =========================================================
+
+  - source: "@quartz-community/graph"
+    enabled: true
+    layout:
+      position: right
+      priority: 30
+
+
+  # =========================================================
+  # TOP HEADER — SEARCH
+  # =========================================================
+
+  - source: "@quartz-community/search"
+    enabled: true
+    layout:
+      position: header
+      priority: 30
+
+
+  # =========================================================
+  # RIGHT SIDEBAR — BACKLINKS
+  # =========================================================
+
+  - source: "@quartz-community/backlinks"
+    enabled: true
+    layout:
+      position: right
+      priority: 50
+
+
+  # =========================================================
+  # ARTICLE TITLE
+  # =========================================================
+
+  - source: "@quartz-community/article-title"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 10
+
+
+  # =========================================================
+  # ARTICLE METADATA
+  # =========================================================
+
+  - source: "@quartz-community/content-meta"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 20
+
+
+  # =========================================================
+  # TAG LIST
+  # =========================================================
+
+  - source: "@quartz-community/tag-list"
+    enabled: false
+    layout:
+      position: beforeBody
+      priority: 30
+
+
+  # =========================================================
+  # TOP HEADER — SITE TITLE (LOGO)
+  # =========================================================
+
+  - source: "@quartz-community/page-title"
+    enabled: true
+    layout:
+      position: header
+      priority: 10
+
+
+  # =========================================================
+  # TOP HEADER — DARK MODE
+  # =========================================================
+
+  - source: "@quartz-community/darkmode"
+    enabled: true
+    layout:
+      position: header
+      priority: 40
+
+
+  # =========================================================
+  # TOP HEADER — READER MODE
+  # =========================================================
+
+  - source: "@quartz-community/reader-mode"
+    enabled: true
+    layout:
+      position: header
+      priority: 50
+
+
+  # =========================================================
+  # TOP HEADER — BREADCRUMBS
+  # =========================================================
+
+  - source: "@quartz-community/breadcrumbs"
+    enabled: true
+    layout:
+      position: header
+      priority: 20
+      condition: not-index
+
+
+  # =========================================================
+  # COMMENTS
+  # =========================================================
+
+  - source: "@quartz-community/comments"
+    enabled: false
+    options:
+      provider: giscus
+      options: {}
+    layout:
+      position: afterBody
+      priority: 10
+
+
+  # =========================================================
+  # FOOTER
+  # =========================================================
+
+  - source: "@quartz-community/footer"
+    enabled: false
+    options:
+      links:
+        GitHub: https://github.com/quphine/quphine.github.io
+    layout:
+      position: footer
+      priority: 50
+
+  - source: "@quartz-community/links-header"
+    enabled: true
+    options:
+      links:
+        GitHub: "https://github.com/quphine"
+        LinkedIn: "https://linkedin.com/in/"
+    layout:
+      position: header
+      priority: 60
+
+
+  # =========================================================
+  # RECENT NOTES
+  # =========================================================
+
+  - source: "@quartz-community/recent-notes"
+    enabled: true
+    options:
+      showDate: false
+    layout:
+      position: left
+      priority: 51
+      
+
+
+  # =========================================================
+  # MOBILE SPACER
+  # =========================================================
+
+  - source: "@quartz-community/spacer"
+    enabled: true
+    options: {}
+    order: 25
+    layout:
+      position: left
+      priority: 25
+      display: mobile-only
+
+
+  # =========================================================
+  # BASES
+  # =========================================================
+
+  - source: "@quartz-community/bases-page"
+    enabled: true
+    options: {}
+    order: 50
+
+
+  # =========================================================
+  # NOTE PROPERTIES
+  # =========================================================
+
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      hidePropertiesView: false
+      delimiters: ---
+      language: yaml
+    order: 5
+    layout:
+      position: beforeBody
+      priority: 15
+      display: all
+
+
+  # =========================================================
+  # EXCALIDRAW
+  # =========================================================
+
+  - source: "@quartz-community/obsidian-plugin-excalidraw"
+    enabled: true
+    options:
+      enableInteraction: true
+      darkMode: auto
+      exportPadding: 20
+
+
+# =============================================================
+# LAYOUT
+# =============================================================
+
+layout:
+
+  groups:
+
+    toolbar:
+      priority: 35
+      direction: row
+      gap: 0.5rem
+
+
+  # ===========================================================
+  # PAGE TYPE LAYOUT OVERRIDES
+  # ===========================================================
+
+  byPageType:
+
+    "404":
+      positions:
+        beforeBody: []
+        left: []
+        right: []
+
+
+    content: {}
+
+
+    folder:
+      exclude:
+        - reader-mode
+      positions:
+        right: []
+
+
+    tag:
+      exclude:
+        - reader-mode
+      positions:
+        right: []
+
+
+    canvas: {}
+
+
+    bases: {}

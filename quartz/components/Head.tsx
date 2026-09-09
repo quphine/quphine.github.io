@@ -104,6 +104,10 @@ export default (() => {
             return resource
           }
         })}
+        {css.map((resource) => CSSResourceToStyleElement(resource, true))}
+        {js
+          .filter((resource) => resource.loadTime === "beforeDOMReady")
+          .map((res) => JSResourceToScriptElement(res, true))}
       </head>
     )
   }
