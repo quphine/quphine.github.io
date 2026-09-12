@@ -1,5 +1,5 @@
 ---
-title: 'Solving the integral (1 - cos(sqrt(e-1) x)) / (x e^x) from 0 to infinity'
+title: 'Solving $\int_0^{\infty} \frac{1-\cos (\sqrt{e-1} x)}{x e^x} d x$'
 tags:
   - integrals
   - laplace-transform
