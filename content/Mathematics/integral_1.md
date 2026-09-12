@@ -1,5 +1,5 @@
 ---
-title: Solving: $\int_0^{\infty} \frac{1-\cos (\sqrt{e-1} x)}{x e^x} d x$
+title: "Solving: $\int_0^{\infty} \frac{1-\cos (\sqrt{e-1} x)}{x e^x} d x$"
 tags:
   - integrals
   - laplace-transform
@@ -12,5 +12,25 @@ $$
 Now, consider a new integral  J(s,k) such that:
 
 $$
-\begin{aligned}\\& J(s, k)=  \int_0^{\infty} e^{-s t}\left(\frac{1-\cos (k x)}{x}\right) d x=\mathcal{L}\left\{\frac{1-\cos (k x)}{x}\right\} \\ & =\mathcal{L}\left\{\frac{1-\cos (k x)}{x}\right\}=\int_s^{\infty} \mathcal{L}\{1-\cos (k x)\} d u \\ & =\int_s^{\infty}\left(\frac{1}{u}-\left[\frac{u}{u^2+k^2}\right]\right) d u=\left.\left(\ln (u)-\frac{1}{2} \ln \left(u^2+k^2\right)\right)\right|_{u=s} ^{\infty} \\ & =\left.\ln \left(\frac{u}{\sqrt{u^2+k^2}}\right)\right|_s ^{\infty}=-\ln \left(\frac{s}{\sqrt{s^2+k^2}}\right) \\ &  I=J(1, \sqrt{e-1}) \\ & =\ln \left(\frac{\sqrt{1^2+e-1}}{1}\right) = \frac{1}{2} \\ & \Rightarrow I=\frac{1}{2}\end{aligned}
+\begin{aligned}
+&J(s,k)
+= \int_0^{\infty} e^{-st}
+\left(\frac{1-\cos(kt)}{t}\right)\,dt
+= \mathcal{L}\left\{\frac{1-\cos(kt)}{t}\right\} \\[4pt]
+&= \int_s^{\infty}
+\mathcal{L}\{1-\cos(kt)\}(u)\,du \\[4pt]
+&= \int_s^{\infty}
+\left(\frac{1}{u}-\frac{u}{u^2+k^2}\right)\,du =
+\left[
+\ln(u)-\frac{1}{2}\ln(u^2+k^2)
+\right]_s^{\infty} \\[4pt]
+&=
+\left[
+\ln\left(\frac{u}{\sqrt{u^2+k^2}}\right)
+\right]_s^{\infty} =
+-\ln\left(\frac{s}{\sqrt{s^2+k^2}}\right) \\[6pt]
+&I=J(1,\sqrt{e-1}) \\[4pt]
+&\implies I=\ln\left(\frac{\sqrt{1^2+e-1}}{1}\right)
+=\frac{1}{2}.
+\end{aligned}
 $$
