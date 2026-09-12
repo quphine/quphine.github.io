@@ -2,6 +2,7 @@ import { FullSlug, isFolderPath, resolveRelative } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
 import { Date, getDate } from "./Date"
 import { QuartzComponent, QuartzComponentProps } from "./types"
+import { renderMathTitle } from "./scripts/renderMathTitle"
 
 export type SortFn = (f1: QuartzPluginData, f2: QuartzPluginData) => number
 
@@ -78,9 +79,8 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
                   <a
                     href={resolveRelative(fileData.slug!, page.slug!)}
                     class="internal internal-link"
-                  >
-                    {title}
-                  </a>
+                    dangerouslySetInnerHTML={{ __html: renderMathTitle(title ?? "") }}
+                  />
                 </h3>
               </div>
               <ul class="tags">

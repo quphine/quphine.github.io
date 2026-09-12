@@ -181,6 +181,27 @@ h1,
 }
 
 /* =========================================================
+   MATH / KATEX FONT SIZING OVERRIDES
+   ========================================================= */
+
+.article-title .katex,
+h1.article-title .katex {
+    font-size: 0.55em !important;
+    vertical-align: middle;
+}
+
+.breadcrumb-container .katex,
+.recent-notes .katex,
+.explorer .katex,
+.section h3 .katex {
+    font-size: 0.85em !important;
+    vertical-align: middle;
+}
+
+
+
+
+/* =========================================================
    6. LINKS
    ========================================================= */
 

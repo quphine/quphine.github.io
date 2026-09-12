@@ -72,7 +72,31 @@ export function pageResources(
   })
 
   const contentIndexPath = joinSegments(baseDir, "static/contentIndex.json")
-  const contentIndexScript = `const fetchData = fetch("${contentIndexPath}").then(data => data.json())`
+  const contentIndexScript = `const fetchData = fetch("${contentIndexPath}").then(data => data.json()).then(data => {
+  if (data && typeof data === "object") {
+    for (const key in data) {
+      if (data[key] && typeof data[key].title === "string") {
+        data[key].title = data[key].title.replace(/\\$\\$([^$]+?)\\$\\$|\\$([^$]+?)\\$/g, (m, display, inline) => {
+          const math = display !== undefined ? display : inline;
+          return (math || "")
+            .replace(/\\\\frac\\{([^{}]+)\\}\\{([^{}]+)\\}/g, "($1)/($2)")
+            .replace(/\\\\sqrt\\{([^{}]+)\\}/g, "√($1)")
+            .replace(/\\\\int/g, "∫")
+            .replace(/\\\\infty/g, "∞")
+            .replace(/\\\\sum/g, "∑")
+            .replace(/\\\\prod/g, "∏")
+            .replace(/\\\\(cos|sin|tan|ln|log|exp|det|dim|deg)/g, "$1")
+            .replace(/\\\\(alpha|beta|gamma|delta|epsilon|theta|lambda|mu|pi|sigma|tau|phi|omega)/gi, (gm, g) => {
+              const greekMap = { alpha:"α", beta:"β", gamma:"γ", delta:"δ", epsilon:"ε", theta:"θ", lambda:"λ", mu:"μ", pi:"π", sigma:"σ", tau:"τ", phi:"φ", omega:"ω" };
+              return greekMap[g.toLowerCase()] || g;
+            })
+            .replace(/\\\\/g, "");
+        });
+      }
+    }
+  }
+  return data;
+})`
 
   const resources: StaticResources = {
     css: [
