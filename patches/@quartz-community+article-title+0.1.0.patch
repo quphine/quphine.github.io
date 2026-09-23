@@ -1,0 +1,110 @@
+diff --git a/node_modules/@quartz-community/article-title/dist/components/index.js b/node_modules/@quartz-community/article-title/dist/components/index.js
+index 9149849..1254565 100644
+--- a/node_modules/@quartz-community/article-title/dist/components/index.js
++++ b/node_modules/@quartz-community/article-title/dist/components/index.js
+@@ -22,11 +22,49 @@ function u2(e2, t2, n2, o2, i2, u3) {
+   return l.vnode && l.vnode(l2), l2;
+ }
+ 
++import katex from "katex";
++
++function escapeHtml(str) {
++  return str
++    .replace(/&/g, "&amp;")
++    .replace(/</g, "&lt;")
++    .replace(/>/g, "&gt;")
++    .replace(/"/g, "&quot;")
++    .replace(/'/g, "&#39;");
++}
++
++function renderMathTitle(raw) {
++  if (!raw) return "";
++  const mathPattern = /\$\$([^$]+?)\$\$|\$([^$]+?)\$/g;
++  let result = "";
++  let lastIndex = 0;
++  let match;
++  while ((match = mathPattern.exec(raw)) !== null) {
++    result += escapeHtml(raw.slice(lastIndex, match.index));
++    const displayMath = match[1];
++    const inlineMath = match[2];
++    const isDisplay = displayMath !== undefined;
++    const expr = isDisplay ? displayMath : inlineMath;
++    try {
++      result += katex.renderToString(expr ?? "", {
++        throwOnError: false,
++        displayMode: isDisplay,
++        output: "html"
++      });
++    } catch (err) {
++      result += escapeHtml(match[0]);
++    }
++    lastIndex = mathPattern.lastIndex;
++  }
++  result += escapeHtml(raw.slice(lastIndex));
++  return result;
++}
++
+ // src/components/ArticleTitle.tsx
+ var ArticleTitle = ({ fileData, displayClass }) => {
+   const title = fileData.frontmatter?.title;
+   if (title) {
+-    return /* @__PURE__ */ u2("h1", { class: classNames(displayClass, "article-title"), children: title });
++    return /* @__PURE__ */ u2("h1", { class: classNames(displayClass, "article-title"), dangerouslySetInnerHTML: { __html: renderMathTitle(title) } });
+   } else {
+     return null;
+   }
+diff --git a/node_modules/@quartz-community/article-title/dist/index.js b/node_modules/@quartz-community/article-title/dist/index.js
+index 9149849..1254565 100644
+--- a/node_modules/@quartz-community/article-title/dist/index.js
++++ b/node_modules/@quartz-community/article-title/dist/index.js
+@@ -22,11 +22,49 @@ function u2(e2, t2, n2, o2, i2, u3) {
+   return l.vnode && l.vnode(l2), l2;
+ }
+ 
++import katex from "katex";
++
++function escapeHtml(str) {
++  return str
++    .replace(/&/g, "&amp;")
++    .replace(/</g, "&lt;")
++    .replace(/>/g, "&gt;")
++    .replace(/"/g, "&quot;")
++    .replace(/'/g, "&#39;");
++}
++
++function renderMathTitle(raw) {
++  if (!raw) return "";
++  const mathPattern = /\$\$([^$]+?)\$\$|\$([^$]+?)\$/g;
++  let result = "";
++  let lastIndex = 0;
++  let match;
++  while ((match = mathPattern.exec(raw)) !== null) {
++    result += escapeHtml(raw.slice(lastIndex, match.index));
++    const displayMath = match[1];
++    const inlineMath = match[2];
++    const isDisplay = displayMath !== undefined;
++    const expr = isDisplay ? displayMath : inlineMath;
++    try {
++      result += katex.renderToString(expr ?? "", {
++        throwOnError: false,
++        displayMode: isDisplay,
++        output: "html"
++      });
++    } catch (err) {
++      result += escapeHtml(match[0]);
++    }
++    lastIndex = mathPattern.lastIndex;
++  }
++  result += escapeHtml(raw.slice(lastIndex));
++  return result;
++}
++
+ // src/components/ArticleTitle.tsx
+ var ArticleTitle = ({ fileData, displayClass }) => {
+   const title = fileData.frontmatter?.title;
+   if (title) {
+-    return /* @__PURE__ */ u2("h1", { class: classNames(displayClass, "article-title"), children: title });
++    return /* @__PURE__ */ u2("h1", { class: classNames(displayClass, "article-title"), dangerouslySetInnerHTML: { __html: renderMathTitle(title) } });
+   } else {
+     return null;
+   }
