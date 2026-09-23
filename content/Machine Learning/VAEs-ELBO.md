@@ -1,5 +1,12 @@
-# Training
+---
+title: 'VAEs and Evidence Lower Bound'
+tags:
+  - probabilistic-DL
+  - loss-function
+---
 
+## Training
+The following section describes the training process of a generic  Variational Autoencoder (VAE)
 - Fix a prior (The assumed distribution usually $\mathcal{N}(0,1)$)
 
 - We begin by taking the input ($x_{LR})$ and passing it into the decoder ($f_{\phi})$
@@ -19,7 +26,7 @@
 
 - We intend to maximize $p(y|x)$ and force the latent distributions (Approximate posteriors) to be close enough to the original prior, so that the model does not give irrationally big or small distributions that are located at arbitrary distances thereby making them meaningless.
 
-# Loss
+## Loss (Evidence Lower Bound - ELBO)
 
 Consider the following integral,
 
