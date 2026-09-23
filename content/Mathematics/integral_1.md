@@ -1,5 +1,6 @@
 ---
-title: 'An improper integral using laplace transform'
+title: 'Solving $\int_0^{\infty} \frac{1-\cos (\sqrt{e-1} x)}{x e^x} d x$'
+
 tags:
   - integrals
   - laplace-transform
