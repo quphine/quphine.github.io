@@ -42,7 +42,7 @@ Throughout this report the saturation voltages are taken as $\pm V_{sat} = \pm 1
 ### Circuit and threshold voltages
 The astable multivibrator is built from one Op-Amp, a timing network $R$–$C$ connected between the output and the inverting input, and a resistive divider $R_1$–$R_2$ that feeds a fraction of the output back to the non-inverting input (Fig. 1).
 
-![Figure 1: Astable multivibrator (square wave generator) using an Op-Amp.](assets\astable-multivibrator.png)
+![Figure 1: Astable multivibrator (square wave generator) using an Op-Amp.](./assets/astable-multivibrator.png)
 
 *Figure 1: Astable multivibrator (square wave generator) using an Op-Amp.*
 
