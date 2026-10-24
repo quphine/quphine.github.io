@@ -1072,3 +1072,23 @@ header .search {
     max-width: 420px !important;
     /* raise this to taste — was 280px */
 }
+
+/* =========================================================
+   FORCE DARK MODE — always use dark palette regardless of
+   saved-theme or prefers-color-scheme. The toggle is hidden
+   so users have no way to switch to light mode anyway.
+   ========================================================= */
+
+:root,
+:root[saved-theme="light"],
+:root[saved-theme="dark"] {
+    --light: #080826 !important;
+    --lightgray: #3d352c !important;
+    --gray: #5c4f42 !important;
+    --darkgray: #e7e0d6 !important;
+    --dark: #f4ece1 !important;
+    --secondary: #ff8a3d !important;
+    --tertiary: #ffb073 !important;
+    --highlight: rgba(255, 138, 61, 0.12) !important;
+    --textHighlight: rgba(255, 138, 61, 0.35) !important;
+}

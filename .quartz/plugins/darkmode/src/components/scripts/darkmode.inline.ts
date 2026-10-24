@@ -1,5 +1,6 @@
-const userPref = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-const currentTheme = localStorage.getItem("theme") ?? userPref;
+// Always default to dark — the darkmode toggle is hidden so users can't change it.
+// Only respect a previously saved explicit localStorage preference.
+const currentTheme = (localStorage.getItem("theme") as "light" | "dark") ?? "dark";
 document.documentElement.setAttribute("saved-theme", currentTheme);
 
 const syncBodyThemeClass = (theme: "light" | "dark") => {
