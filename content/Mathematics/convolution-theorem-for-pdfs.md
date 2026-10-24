@@ -7,12 +7,11 @@ date: 2026-10-24
 Consider three random variables related by, $Z = X + Y$ where $X$ and $Y$ are independent. Our aim is to determine $f_{Z}(z)$ given $f_{X}(x)$ and $f_{Y}(y)$. From the definition of probability density function (PDF), we have that,
 
 $$
-P(a \le Z \le b) = \int_a^b f_Z(z)\,dz
+P(a \le Z \le b) = \int_a^b f_Z(z)\,dz\\
+\Rightarrow P(z \le Z \le z+\Delta z) = \int_z^{z+\Delta z} f_Z(z)\,dz \approx f_Z(z)\cdot\Delta z \;\Rightarrow\; f_Z(z) = \lim_{\Delta z \to 0}\left[\frac{P(z \le Z \le z+\Delta z)}{\Delta z}\right]
 $$
 
-$$
-\Rightarrow P(z \le Z \le z+\Delta z) = \int_z^{z+\Delta z} f_Z(z)\,dz \approx f_Z(z)\cdot\Delta z \;\Rightarrow\; f_Z(z) = \lim_{\Delta z \to 0}\left[\frac{P(z \le Z \le z+\Delta z)}{\Delta z}\right]
-$$ Therefore we obtain our PDF as a limit. Now we introduce a conditional intermediate to proceed further; consider,
+ Therefore we obtain our PDF as a limit. Now we introduce a conditional intermediate to proceed further; consider,
 
 $$
 P\big(z \le X+Y \le z+\Delta z \mid X=x\big) = P\big(z-x \le Y \le z+\Delta z-x \mid X=x\big)
