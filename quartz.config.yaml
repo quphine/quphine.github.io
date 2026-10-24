@@ -7,6 +7,9 @@ configuration:
   baseUrl: "quphine.github.io"
   ignorePatterns: ["private", "templates", ".obsidian"]
   defaultDateType: "created"
+  analytics:
+    provider: google
+    tagId: "G-Y3WJBMNG8Y"
   theme:
     fontOrigin: local
     typography:
