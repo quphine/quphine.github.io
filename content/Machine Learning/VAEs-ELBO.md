@@ -3,6 +3,7 @@ title: 'VAEs and Evidence Lower Bound'
 tags:
   - probabilistic-DL
   - loss-function
+date: 2026-09-15
 ---
 
 ## Training
