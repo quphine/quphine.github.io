@@ -21,6 +21,7 @@ $$
 = \int_{z-x}^{z-x+\Delta z} f_Y(y)\,dy \approx f_Y(z-x)\,\Delta z
 $$
 
+Also, from the total probability theorem we have,
 $$
 P\big(z \le Y+X \le z+\Delta z\big) = \int_{-\infty}^{+\infty} P\big(z-x \le Y \le z+\Delta z-x \mid X=x\big)\cdot f_X(x)\,dx
 $$
@@ -35,7 +36,8 @@ $$
 
 $$
 \Rightarrow f_Z(z) = (f_Y * f_X)(z)
-$$ And hence we obtain that the probability density function of the dependent variable $Z$, is the convolution of the PDFs of the independent variables. The same argument can be iteratively exploited to extend the result to $n$ independent variables whose linear combination yields a new dependent random variable.
+$$
+ And hence we obtain that the probability density function of the dependent variable $Z$, is the convolution of the PDFs of the independent variables. The same argument can be iteratively exploited to extend the result to $n$ independent variables whose linear combination yields a new dependent random variable.
 $$
 \text{if }Z=X_{1}+X_{2} +\dots+{X_{n}\text{ then, }}\\
 \\
