@@ -21,7 +21,7 @@
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
     "prebuild": "npm run install-plugins",
     "postinstall": "patch-package",
-    "build:site": "quartz build && node postbuild.mjs"
+    "build:site": "npx quartz build && node postbuild.mjs"
   },
   "engines": {
     "npm": ">=10.9.2",
